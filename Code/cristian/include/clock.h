@@ -13,9 +13,13 @@ inline std::ostream& operator<<(std::ostream& out, decltype(std::chrono::system_
 
 class Clock{
     public:
-        Clock(): step{1000}{}; //default constructor -> step = 1s
+        Clock(): step{1000}{ //default constructor -> step = 1s
+            this->curr_time = std::chrono::system_clock::now();
+        }; 
 
-        Clock(int val):step{val}{}; //step = beliebige zeit
+        Clock(int val):step{val}{  //step = beliebige zeit
+            this->curr_time = std::chrono::system_clock::now();
+        };
 
         void operator()(){
             while(true){

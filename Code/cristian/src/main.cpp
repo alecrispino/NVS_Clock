@@ -11,7 +11,7 @@ int main(){
     cout << "Cristian" << endl;
     spdlog::info("Cristian");
 
-    Clock c{400};
+    Clock c;
     c();
 
     return EXIT_SUCCESS;
