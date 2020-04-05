@@ -1,0 +1,5 @@
+option('asio_include_dir', type : 'string', value : '/Users/a.crispino/Documents/Sj5/POS/libraries/asio-master/asio/include')
+option('spdlog_include_dir', type : 'string', value : '/Users/a.crispino/Documents/Sj5/POS/libraries/spdlog-1.x/include',
+description : 'include dir of spdlog')
+option('cli11_include_dir', type : 'string', value : '/Users/a.crispino/Documents/Sj5/POS/libraries/',
+description : 'include dir of cli11')

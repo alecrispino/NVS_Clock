@@ -1,0 +1,8 @@
+[
+  {
+    "directory": "/Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build",
+    "command": "c++ -Icristian@exe -I. -I.. -I../include -I/Users/a.crispino/Documents/Sj5/POS/libraries/asio-master/asio/include -I/Users/a.crispino/Documents/Sj5/POS/libraries/spdlog-1.x/include -I/Users/a.crispino/Documents/Sj5/POS/libraries/ -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -Wextra -Wpedantic -Werror -std=c++17 -g -MD -MQ 'cristian@exe/src_main.cpp.o' -MF 'cristian@exe/src_main.cpp.o.d' -o 'cristian@exe/src_main.cpp.o' -c ../src/main.cpp",
+    "file": "../src/main.cpp",
+    "output": "cristian@exe/src_main.cpp.o"
+  }
+]
