@@ -39,9 +39,17 @@ class Clock{
         }
 
         auto get_time(){
+            std::lock_guard<std::mutex> lg{this->mtx};
             std::time_t t{std::chrono::system_clock::to_time_t(this->curr_time)};
             std::tm* ptm{std::localtime(&t)};
             return std::make_tuple(ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+        }
+
+        long to_time(){
+            std::lock_guard<std::mutex> lg{this->mtx};
+            std::time_t tmp = std::chrono::system_clock::to_time_t(this->curr_time);
+            return static_cast<long>(tmp);
+
         }
 
     private:
