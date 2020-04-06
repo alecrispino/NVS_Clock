@@ -26,6 +26,24 @@ class Clock{
             }
         }
 
+        void set_time(int hours, int minutes, int seconds){
+            printer("in set time");
+            std::lock_guard<std::mutex> lg{this->mtx};
+            std::time_t t{std::chrono::system_clock::to_time_t(this->curr_time)};
+            std::tm* ptm{std::localtime(&t)};
+            ptm->tm_hour = hours;
+            ptm->tm_min = minutes;
+            ptm->tm_sec = seconds;
+            t = std::mktime(ptm);
+            this->curr_time = std::chrono::system_clock::from_time_t(t);
+        }
+
+        auto get_time(){
+            std::time_t t{std::chrono::system_clock::to_time_t(this->curr_time)};
+            std::tm* ptm{std::localtime(&t)};
+            return std::make_tuple(ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+        }
+
     private:
         int step;
         std::chrono::time_point<std::chrono::system_clock> curr_time;

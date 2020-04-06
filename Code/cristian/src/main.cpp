@@ -4,6 +4,7 @@
 #include "CLI11.hpp"
 
 #include "clock.h"
+#include <thread>
 
 using namespace std;
 
@@ -11,8 +12,14 @@ int main(){
     cout << "Cristian" << endl;
     spdlog::info("Cristian");
 
-    Clock c;
-    c();
+    thread t([](){
+        Clock c;
+        //this_thread::sleep_for(chrono::seconds(3));
+        c.set_time(12,4,2);
+        c();
+    });
+
+    t.join();
 
     return EXIT_SUCCESS;
 }
