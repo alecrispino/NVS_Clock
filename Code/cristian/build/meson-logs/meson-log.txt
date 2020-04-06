@@ -1,4 +1,4 @@
-Build started at 2020-04-05T15:10:03.739658
+Build started at 2020-04-06T19:58:56.396657
 Main binary: /usr/local/opt/python/bin/python3.7
 Build Options: 
 Python system: Darwin
@@ -45,11 +45,12 @@ Host machine cpu family: x86_64
 Host machine cpu: x86_64
 Target machine cpu family: x86_64
 Target machine cpu: x86_64
+Run-time dependency threads found: YES 
 Build targets in project: 1
 Found ninja-1.9.0 at /usr/local/bin/ninja
 Running compile:
-Working directory:  /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpj6ndbvr2
-Command line:  c++ /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpj6ndbvr2/testfile.cpp -o /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpj6ndbvr2/output.obj -pipe -c -std=c++17 
+Working directory:  /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpsyhu4bdh
+Command line:  c++ /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpsyhu4bdh/testfile.cpp -o /var/folders/n4/0bghpcxn0kbb84y2xv1t89bc0000gn/T/tmpsyhu4bdh/output.obj -pipe -c -std=c++17 
 
 Code:
  int i = static_cast<int>(0);
@@ -59,8 +60,8 @@ Compiler stderr:
  
 Compiler accepts -std=c++17: YES
 Running compile:
-Working directory:  /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpqiby8wz6
-Command line:  c++ /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpqiby8wz6/testfile.cpp -o /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpqiby8wz6/output.obj -pipe -c -O0 -fpermissive --print-search-dirs 
+Working directory:  /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpdpslfvol
+Command line:  c++ /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpdpslfvol/testfile.cpp -o /Users/a.crispino/Documents/Sj5/Corona/NVS/NVS_Clock/Code/cristian/build/meson-private/tmpdpslfvol/output.obj -pipe -c -O0 -fpermissive --print-search-dirs 
 
 Code:
  
