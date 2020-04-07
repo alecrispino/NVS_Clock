@@ -13,16 +13,20 @@ int main(){
     cout << "Cristian" << endl;
     spdlog::info("Cristian");
 
-    thread t([](){
-        Clock c;
+    Clock c;
+    Clock c1;
+    thread t3{ref(c1)};
+    thread t{ref(c)};
+    thread t2{[&c]{
         //this_thread::sleep_for(chrono::seconds(3));
         c.set_time(12,4,2);
         printer(to_string(get<0>(c.get_time())));
         printer(to_string(c.to_time()));
-        c();
-    });
+    }};
 
     t.join();
+    t2.join();
+    t3.join();
 
     return EXIT_SUCCESS;
 }

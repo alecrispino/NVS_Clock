@@ -52,6 +52,11 @@ class Clock{
 
         }
 
+        void from_time(time_t tmp){
+            std::lock_guard<std::mutex> lg{this->mtx};
+            this->curr_time = std::chrono::system_clock::from_time_t(tmp);
+        }
+
     private:
         int step;
         std::chrono::time_point<std::chrono::system_clock> curr_time;
