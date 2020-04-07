@@ -23,6 +23,7 @@ int main(){
     });
 
     t.join();
+    
 
     return EXIT_SUCCESS;
 }
