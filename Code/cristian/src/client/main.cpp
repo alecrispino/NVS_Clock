@@ -4,6 +4,7 @@
 #include "CLI11.hpp"
 
 using namespace std;
+using namespace asio::ip;
 
 int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
 
