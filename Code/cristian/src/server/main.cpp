@@ -35,8 +35,11 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
 
         //getline(strm, data);
         
-        strm >> data;
-        spdlog::info("client: {0}", data);
+        if(strm >> data){//wenn afrage bekommen
+            spdlog::info("client: {0}", data);
+            this_thread::sleep_for(chrono::seconds(2));//wartezeit später random
+            strm << 2 << endl;//wartezeit in stream schreiben
+        }
     }
 
     return EXIT_SUCCESS;

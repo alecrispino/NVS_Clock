@@ -19,8 +19,8 @@ class Clock{
 
         void operator()(){
             while(true){
-                std::lock_guard<std::mutex> lg{this->mtx};
                 std::this_thread::sleep_for(std::chrono::milliseconds(this->step));
+                std::lock_guard<std::mutex> lg{this->mtx};
                 this->curr_time += std::chrono::seconds(1);
                 printer(this->curr_time);
             }
