@@ -2,6 +2,7 @@
 #include "spdlog/spdlog.h"
 #include "asio.hpp"
 #include "CLI11.hpp"
+#include "clock.h"
 
 using namespace std;
 using namespace asio::ip;
@@ -12,6 +13,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     app.add_option("-p", port, "Port")->default_val("9999");
 
     CLI11_PARSE(app, argc, argv);
+
+    Clock clock;
+    thread thread{ref(clock)};
+    thread.detach();
 
     spdlog::info("server started");
 

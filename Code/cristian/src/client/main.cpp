@@ -19,6 +19,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
 
     CLI11_PARSE(app, argc, argv);
 
+    Clock clock;
+    thread thread{ref(clock)};
+    thread.detach();
+
     while(true){
         tcp::iostream strm{"localhost", to_string(port)};
 
