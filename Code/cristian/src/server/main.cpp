@@ -1,13 +1,17 @@
 #include <iostream>
 #include "spdlog/spdlog.h"
 #include "asio.hpp"
+#include "CLI11.hpp"
 
 using namespace std;
 using namespace asio::ip;
 
 int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
+    CLI::App app{"Server"};
+    int port{};
+    app.add_option("-p", port, "Port")->default_val("9999");
 
-    int port{1000};
+    CLI11_PARSE(app, argc, argv);
 
     spdlog::info("server started");
 
@@ -17,16 +21,17 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     acceptor.listen();
     spdlog::info("server listens on port: {0:d}", port);
 
+    string data;
+
     while(true){
         tcp::socket sock{ctx};
         acceptor.accept(sock);
-        spdlog::info("client connected");
         tcp::iostream strm{std::move(sock)};
 
-        string data;
-        spdlog::info("sending data");
-        strm << "server message";
-        spdlog::info("data sent");
+        //getline(strm, data);
+        
+        strm >> data;
+        spdlog::info("client: {0}", data);
     }
 
     return EXIT_SUCCESS;
