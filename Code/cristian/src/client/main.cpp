@@ -22,7 +22,7 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     CLI11_PARSE(app, argc, argv);
 
     //Clock
-    Clock clock(1300);
+    Clock clock(300);
     thread thread{ref(clock)};
     thread.detach();
 
@@ -30,6 +30,8 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     long t0;
     long t1;
     long I;
+
+    long new_tp;
 
     while(true){
 
@@ -42,13 +44,19 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
             printer("t0: " + to_string(t0));
             spdlog::info("client sent message");
 
-            if(strm >> I){
-                t1 = clock.to_time();
+            if(strm >> I){//wenn antwort gekommen
+                t1 = clock.to_time();//antwortzeitpunkt
                 printer("t1: " + to_string(t1) + " " + to_string(I));
+
+                new_tp = t1 + ((t1-t0-I)/2);
+
+                spdlog::info("Setting client time");
+                clock.from_time(new_tp);
+                spdlog::info("Client time set");
             }
             strm.close();
         }else{
-            cerr << "Could not connect to Server." << endl;
+            spdlog::error("Could not connect to Server.");
         }
 
         this_thread::sleep_for(chrono::seconds(2));
