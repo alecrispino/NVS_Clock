@@ -22,14 +22,16 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     CLI11_PARSE(app, argc, argv);
 
     //Clock
-    Clock clock(300);
+    Clock clock(1300);
     thread thread{ref(clock)};
     thread.detach();
+    clock.set_time(23,2,10);
 
     //Cristian
     long t0;
     long t1;
     long I;
+    long ts;
 
     long new_tp;
 
@@ -46,9 +48,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
 
             if(strm >> I){//wenn antwort gekommen
                 t1 = clock.to_time();//antwortzeitpunkt
-                printer("t1: " + to_string(t1) + " " + to_string(I));
+                strm >> ts;
+                printer("t1: " + to_string(t1) + " " + to_string(I) + " ts:" + to_string(ts));
 
-                new_tp = t1 + ((t1-t0-I)/2);
+                new_tp = ts + ((t1-t0-I)/2);
 
                 spdlog::info("Setting client time");
                 clock.from_time(new_tp);

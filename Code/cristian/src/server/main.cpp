@@ -27,6 +27,7 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     spdlog::info("server listens on port: {0:d}", port);
 
     string data;
+    long ts;
 
     while(true){
         tcp::socket sock{ctx};
@@ -37,8 +38,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
         
         if(strm >> data){//wenn afrage bekommen
             spdlog::info("client: {0}", data);
-            this_thread::sleep_for(chrono::seconds(2));//wartezeit später random
-            strm << 2 << endl;//wartezeit in stream schreiben
+            this_thread::sleep_for(chrono::seconds(5));//wartezeit später random
+            strm << 5 << endl;//wartezeit in stream schreiben
+            ts = clock.to_time();
+            strm << ts << endl;
         }
     }
 
