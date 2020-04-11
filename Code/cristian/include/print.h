@@ -1,6 +1,7 @@
 #pragma once
 
 #include <mutex>
+#include "spdlog/spdlog.h"
 
 std::mutex mtx;
 
