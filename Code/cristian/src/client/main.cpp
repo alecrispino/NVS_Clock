@@ -22,10 +22,10 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
     CLI11_PARSE(app, argc, argv);
 
     //Clock
-    Clock clock(1300);
+    Clock clock(1800);
     thread thread{ref(clock)};
     thread.detach();
-    clock.set_time(23,2,10);
+    clock.set_time(12,2,10);
 
     //Cristian
     long t0;
@@ -35,7 +35,9 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
 
     long new_tp;
 
-    while(true){
+    int counter{0};
+
+    while(counter != 3){
 
         tcp::iostream strm{"localhost", to_string(port)};
 
@@ -62,8 +64,11 @@ int main([[maybe_unused]]int argc, [[maybe_unused]]char* argv[]){
             spdlog::error("Could not connect to Server.");
         }
 
-        this_thread::sleep_for(chrono::seconds(2));
+        this_thread::sleep_for(chrono::seconds(10));
+        counter++;
     }
+
+    spdlog::info("Client finished.");
 
     return EXIT_SUCCESS;
 }
